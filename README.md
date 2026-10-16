@@ -11,9 +11,9 @@
 
 ## 1. 수술용 로봇의 전체 시스템 구조
 
-![](002.jpg)
+<img src="002.jpg" >
 
-![](003.jpg) ![](004.jpg)
+<img src="003.jpg" height="200"> <img src="004.jpg" height="200">
 
 
 수술용 로봇은 크게 의사가 조작하는 마스터 시스템, 환자 측에서 움직이는 슬레이브 로봇, 수술 영상 시스템, 실시간 제어기, 안전 감시 시스템으로 구성됩니다.
@@ -52,6 +52,56 @@
 > **개념도:** 영상과 센서 데이터는 제어기에 피드백되어 로봇 동작과 안전 감시에 활용됩니다.
 
 핵심은 각 부품의 성능만 높이는 것이 아니라, 센서에서 얻은 정보가 제어기에 전달되고 실제 기구의 움직임으로 이어지는 전체 폐루프(closed-loop)를 안정적으로 구현하는 것입니다.
+
+004.jpg
+Add files via upload
+9 minutes ago
+005.jpg
+Add files via upload
+4 minutes ago
+006.jpg
+Add files via upload
+4 minutes ago
+007.jpg
+Add files via upload
+4 minutes ago
+008.jpg
+Add files via upload
+4 minutes ago
+009.jpg
+Add files via upload
+4 minutes ago
+010.jpg
+Add files via upload
+4 minutes ago
+011.jpg
+Add files via upload
+4 minutes ago
+012.jpg
+Add files via upload
+4 minutes ago
+013.jpg
+Add files via upload
+4 minutes ago
+014.jpg
+Add files via upload
+4 minutes ago
+015.jpg
+Add files via upload
+4 minutes ago
+016.jpg
+Add files via upload
+4 minutes ago
+017.jpg
+Add files via upload
+4 minutes ago
+018.jpg
+Add files via upload
+4 minutes ago
+019.jpg
+Add files via upload
+4 minutes ago
+020.jpg
 
 ---
 
