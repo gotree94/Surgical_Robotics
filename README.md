@@ -197,19 +197,19 @@
 
 지금까지의 FPGA·임베디드·로봇 제어 기술을 활용해 연구용 프로토타입을 만든다고 가정하면, 아래 구성이 현실적입니다.
 
- <img src="017.jpg" height="450">
+ <img src="017.jpg" height="150">
 
 * **상위 제어·로봇 소프트웨어:** Ubuntu, ROS 2, MoveIt 2, Python/C++ (좌표 변환, 기구학, 경로 계획, 시각화, 데이터 로깅 담당)
 
-<img src="018.jpg" height="450">
+<img src="018.jpg" height="150">
 
 * **실시간 제어·펌웨어:** STM32, 엔코더, PWM, 전류 센싱, CAN (관절별 제어 루프, 센서 취득, 통신 감시 및 안전 정지 로직 구현)
 
-<img src="019.jpg" height="450">
+<img src="019.jpg" height="150">
 
 * **영상 인식·AI:** OpenCV, PyTorch, ONNX Runtime (카메라 보정, 물체 추적, 기구 위치 추정부터 시작해 학습 모델을 단계적으로 추가)
 
-<img src="010.jpg" height="450">
+<img src="010.jpg" height="150">
 
 * **시뮬레이션·검증:** Gazebo, MuJoCo, Isaac Sim 등 (충돌, 경로, 센서 오차 및 제어 성능을 가상환경에서 시험한 후 실제 장비와 결과를 비교)
 
