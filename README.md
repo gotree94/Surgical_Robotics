@@ -53,85 +53,50 @@
 
 핵심은 각 부품의 성능만 높이는 것이 아니라, 센서에서 얻은 정보가 제어기에 전달되고 실제 기구의 움직임으로 이어지는 전체 폐루프(closed-loop)를 안정적으로 구현하는 것입니다.
 
-004.jpg
-Add files via upload
-9 minutes ago
-005.jpg
-Add files via upload
-4 minutes ago
-006.jpg
-Add files via upload
-4 minutes ago
-007.jpg
-Add files via upload
-4 minutes ago
-008.jpg
-Add files via upload
-4 minutes ago
-009.jpg
-Add files via upload
-4 minutes ago
-010.jpg
-Add files via upload
-4 minutes ago
-011.jpg
-Add files via upload
-4 minutes ago
-012.jpg
-Add files via upload
-4 minutes ago
-013.jpg
-Add files via upload
-4 minutes ago
-014.jpg
-Add files via upload
-4 minutes ago
-015.jpg
-Add files via upload
-4 minutes ago
-016.jpg
-Add files via upload
-4 minutes ago
-017.jpg
-Add files via upload
-4 minutes ago
-018.jpg
-Add files via upload
-4 minutes ago
-019.jpg
-Add files via upload
-4 minutes ago
-020.jpg
-
 ---
 
 ## 2. 핵심 기술 7가지와 구현 방법
 
 ### ① 정밀 기구 및 메커니즘 설계 (기계·메카트로닉스)
+
+<img src="005.jpg" height="150">
+
 * **RCM(Remote Center of Motion)**: 기구가 절개 부위를 중심으로 회전하도록 설계
 * 텐던 구동 및 소형 손목 관절로 좁은 공간에서 정밀 조작
 * 감속기, 케이블 장력, 마찰, 백래시 보상
 * **구현:** CAD $\rightarrow$ 기구학 해석 $\rightarrow$ 3D 프린팅 목업 $\rightarrow$ 모터·엔코더 장착 $\rightarrow$ 위치 정밀도 측정
 
 ### ② 실시간 모션 제어 (임베디드·제어)
+
+<img src="006.jpg" height="150">
+
 * 역기구학(IK), 좌표 변환, 관절 궤적 생성
 * PID 및 모델 기반 제어, 손 떨림 필터링
 * 손 움직임과 로봇 동작 사이의 비율 조정(Motion Scaling)
 * **구현:** ROS 2로 상위 명령을 처리하고, MCU 또는 실시간 제어기에서 모터 제어·엔코더 피드백·안전 감시 수행
 
 ### ③ 의료 영상 및 공간 인식 (컴퓨터 비전·AI)
+
+<img src="007.jpg" height="150">
+
 * 스테레오 내시경의 깊이 추정
 * 조직·혈관·수술 도구 분할 및 추적
 * CT/MRI와 수술 중 영상의 좌표 정합
 * **구현:** OpenCV, 깊이 추정, 딥러닝 분할 모델을 적용하고, 카메라 좌표계와 로봇 좌표계를 보정합니다.
 
 ### ④ 힘·촉각 센싱 (Haptics) (센서·신호처리)
+
+<img src="008.jpg" height="150">
+
 * 미세 힘 센서 또는 스트레인 게이지
 * 모터 전류 기반 접촉력 추정
 * 의사 조작부로 힘을 되돌리는 햅틱 피드백
 * **구현:** 센서 보정 $\rightarrow$ 노이즈 필터링 $\rightarrow$ 힘 추정 $\rightarrow$ 안전 한계 판정 $\rightarrow$ 햅틱 장치 구동. 전류 추정은 마찰과 기구의 탄성 때문에 실제 접촉력을 정확히 대변하지 못할 수 있습니다.
 
 ### ⑤ AI 기반 수술 보조 및 동작 학습 (AI·머신러닝)
+
+<img src="009.jpg" height="150">
+
 * 수술 영상에서 도구와 해부학적 구조 인식
 * 의사의 동작 시범을 이용한 모방학습(IL)
 * 시연 데이터와 강화학습(RL)을 활용한 동작 정책 학습
@@ -139,6 +104,9 @@ Add files via upload
 * **구현:** 영상·관절 궤적 동기화 $\rightarrow$ 동작 데이터셋 구축 $\rightarrow$ 모델 학습 $\rightarrow$ 시뮬레이션 검증 $\rightarrow$ 제한된 작업 평가
 
 ### ⑥ 디지털 트윈 및 시뮬레이션 (가상 검증)
+
+<img src="010.jpg" height="150">
+
 * 로봇 기구·모터·센서의 가상 모델
 * 조직의 변형과 기구 접촉 모델링
 * 실제 장비를 연결하는 HIL(Hardware-in-the-Loop)
@@ -146,6 +114,9 @@ Add files via upload
 * **구현:** CAD 모델 $\rightarrow$ 물리 시뮬레이션 $\rightarrow$ 제어기 연동 $\rightarrow$ 실제 센서·모터 인터페이스 연결
 
 ### ⑦ 기능 안전 및 의료기기 소프트웨어 (필수 기반 기술)
+
+<img src="011.jpg" height="150">
+
 * 관절별 위치·속도·힘 제한
 * 통신 단절, 센서 오류, 전원 장애 감지
 * 비상 정지와 안전한 정지 상태 전환
@@ -172,6 +143,10 @@ Add files via upload
 2024년 FDA 허가 로봇을 분석한 체계적 문헌고찰에서는 조사 대상 49개 시스템 중 86%가 지속적인 의사 제어를 받는 보조 수준이었으며, 조건부 자율 수준은 6%였습니다. (이 수치는 2023년까지의 허가 자료를 분석한 결과이며, 2026년 전체 시스템의 비율과는 다를 수 있습니다.)
 
 ### 동향 B. 수술 동작을 데이터로 학습하는 로봇
+
+<img src="012.jpg" height="150"> <img src="013.jpg" height="150"> <img src="014.jpg" height="150">
+
+
 기존에는 엔지니어가 로봇의 움직임을 일일이 프로그래밍했다면, 이제는 숙련된 의사의 수술 영상과 기구 궤적을 수집해 동작 정책을 학습하는 접근이 중요해지고 있습니다.
 * **Imitation Learning:** 전문가가 수행한 동작을 모방하도록 학습
 * **Behavior Cloning:** 관측 상태에서 다음 동작을 예측
@@ -182,6 +157,9 @@ Add files via upload
 > **주의점:** 일반 로봇에서 검증된 학습 방법이 곧바로 수술 환경에서 안전하다는 뜻은 아닙니다. 조직의 변형, 출혈, 시야 가림, 환자별 차이 등은 학습 데이터만으로 해결하기 어렵습니다.
 
 ### 동향 C. 소프트 로보틱스와 유연한 수술 도구
+
+<img src="015.jpg" height="150">
+
 2026년 발표된 소프트 로보틱스 리뷰는 유연한 구조를 이용해 좁고 복잡한 인체 내부에 접근하는 기술을 다룹니다.
 * **연속체 로봇 (Continuum Robot):** 여러 관절 대신 연속적으로 휘어지는 구조
 * **유연 내시경 및 조향 카테터:** 곡선 경로를 따라 이동
@@ -191,6 +169,10 @@ Add files via upload
 기존 강체 로봇은 위치 정밀도와 강성 확보에 유리하지만, 유연 로봇은 접근성과 조직 적응성에서 장점이 있습니다. 대신 형상 추정, 힘 제어, 재료의 피로 및 반복 정밀도 문제가 더 까다로워집니다.
 
 ### 동향 D. 디지털 트윈과 실제 장비의 연동
+
+<img src="016.jpg" height="150"> <img src="017.jpg" height="450">
+
+
 디지털 트윈은 단순한 3D 시각화가 아닙니다. 실제 로봇의 관절 상태, 센서값, 제어 명령과 가상 모델을 연결해 시스템의 동작을 검증하는 기술입니다.
 * **가상 모델:** 기구학·동역학·충돌·가상 조직
 * **실제 시스템:** 모터·엔코더·힘 센서·제어기
@@ -215,9 +197,18 @@ Add files via upload
 
 지금까지의 FPGA·임베디드·로봇 제어 기술을 활용해 연구용 프로토타입을 만든다고 가정하면, 아래 구성이 현실적입니다.
 
+<img src="018.jpg" height="450">
+
 * **상위 제어·로봇 소프트웨어:** Ubuntu, ROS 2, MoveIt 2, Python/C++ (좌표 변환, 기구학, 경로 계획, 시각화, 데이터 로깅 담당)
+
+<img src="019.jpg" height="450">
+
 * **실시간 제어·펌웨어:** STM32, 엔코더, PWM, 전류 센싱, CAN (관절별 제어 루프, 센서 취득, 통신 감시 및 안전 정지 로직 구현)
+
+<img src="010.jpg" height="450">
+
 * **영상 인식·AI:** OpenCV, PyTorch, ONNX Runtime (카메라 보정, 물체 추적, 기구 위치 추정부터 시작해 학습 모델을 단계적으로 추가)
+
 * **시뮬레이션·검증:** Gazebo, MuJoCo, Isaac Sim 등 (충돌, 경로, 센서 오차 및 제어 성능을 가상환경에서 시험한 후 실제 장비와 결과를 비교)
 
 이 구성은 연구용 로봇 팔에 적합한 출발점입니다. 실제 수술용 장비로 발전시키려면 멸균 가능한 기구, 생체적합 재료, 임상 요구사항, 독립적인 안전 설계와 의료기기 검증을 추가해야 합니다.
