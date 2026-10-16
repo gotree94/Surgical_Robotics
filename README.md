@@ -13,7 +13,7 @@
 
 <img src="002.jpg" >
 
-<img src="003.jpg" height="400"> <img src="004.jpg" height="400">
+<img src="003.jpg" height="500"> <img src="004.jpg" height="500">
 
 
 수술용 로봇은 크게 의사가 조작하는 마스터 시스템, 환자 측에서 움직이는 슬레이브 로봇, 수술 영상 시스템, 실시간 제어기, 안전 감시 시스템으로 구성됩니다.
