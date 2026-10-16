@@ -59,7 +59,7 @@
 
 ### ① 정밀 기구 및 메커니즘 설계 (기계·메카트로닉스)
 
-<img src="003.jpg" height="450">
+<img src="003.jpg" height="150">
 
 * **RCM(Remote Center of Motion)**: 기구가 절개 부위를 중심으로 회전하도록 설계
 * 텐던 구동 및 소형 손목 관절로 좁은 공간에서 정밀 조작
